@@ -6,6 +6,7 @@ COPY . .
 RUN mvn package
 FROM base AS final
 WORKDIR /usr/local/tomcat/webapps/
-COPY --from=build /var/www/target/helloworld.war helloworld.war
+COPY --from=build /var/www/target/goldenWastedd-0.0.1-SNAPSHOT.jar goldenWastedd-0.0.1-SNAPSHOT.jar
+
 
 CMD ["catalina.sh","run"]
