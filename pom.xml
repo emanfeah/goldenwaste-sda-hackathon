@@ -76,6 +76,13 @@
             <version>3.6.0</version>
         </dependency>
 	</dependencies>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>0242eb6a2bb1-snapshots</name>
+            <url>http://ec2-52-91-193-67.compute-1.amazonaws.com:8081/artifactory/hacthonrep-libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 	<build>
 		<plugins>
