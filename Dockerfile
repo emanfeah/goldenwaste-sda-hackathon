@@ -1,7 +1,13 @@
-FROM maven:3.8.6-jdk-11 AS build
-EXPOSE 8080
-WORKDIR /var/www
+FROM maven:3.8.6-openjdk-11
+ENV GOLDEN_DB_URL=localhost
+ENV GOLDEN_DB_NAME=goldendb
+ENV GOLDEN_DB_USERNAME=admin
+ENV GOLDEN_DB_PASSWORD=DevOps2022
+ENV GOLDEN_DB_PORT=3306
+WORKDIR /app
+ADD pom.xml .
+RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "verify", "clean", "--fail-never"]
 COPY . .
 RUN mvn package
-
-CMD ["catalina.sh", "run"]
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","target/goldenWastedd-0.0.1-SNAPSHOT.jar"]
